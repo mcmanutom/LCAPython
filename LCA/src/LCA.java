@@ -50,9 +50,17 @@ class binaryTree
 	    root = addToTree(root, value);
 	}
 	
-	 public binaryTree createTree()
+	 public binaryTree createTree() //Creating a tree to test LCA
 	 {
 		 binaryTree LCASample = new binaryTree();
-		 LCA
+		 LCASample.add(8);				//			    8
+		 LCASample.add(5);				//			  /	  \
+		 LCASample.add(10);				//			 5		10
+		 LCASample.add(2);				//			/ \    /  \
+		 LCASample.add(6);				//		   2   6  9    12
+		 LCASample.add(9);
+		 LCASample.add(12);
+		 
+		 return(LCASample);
 	 }
 }
