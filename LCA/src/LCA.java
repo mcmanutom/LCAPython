@@ -17,11 +17,12 @@ class Node
     }
 } 
 
-//This function will create the entire tree - unfinished so far
+//This function will create the entire tree 
 class binaryTree
 {
+	Node root;
 
-//This function will add nodes to the tree - not completely done
+//This function will add nodes to the tree
 	Node addToTree (Node x, int value)
 	{
 		if (value == 0) //Finds where new node is placed
@@ -38,8 +39,20 @@ class binaryTree
 		} 
 		else
 		{
-			Node result = new Node (value);
+			Node result = x;
 			return (result); // When no more options that it is less than or equal to it returns value
 		}
+		return(x);
 	}
+	
+	public void add(int value)  // Implementing the add to tree
+	{
+	    root = addToTree(root, value);
+	}
+	
+	 public binaryTree createTree()
+	 {
+		 binaryTree LCASample = new binaryTree();
+		 LCA
+	 }
 }
