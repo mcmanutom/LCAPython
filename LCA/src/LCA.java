@@ -64,24 +64,21 @@ class binaryTree
 		 return(LCASample);
 	 }
 	 
-	 public Node LCA(binaryTree tree, int x, int y) //takes in tree and values of the two nodes we want to find LCA for
+	 public Node LCA(binaryTree tree, Node x, Node y) //takes in tree and values of the two nodes we want to find LCA for
 	 {
-		 Node test = tree.root;
-		 parseInt(test);
 		 while (root != null) 
 		    { 
-		        if (root >  x && root > y) // If both x and y are smaller than root then LCA lies in left branch
+		        if (root.value >  x.value && root.value > y.value) // If both x and y are smaller than root then LCA lies in left branch
 		        {
 		        	root = root.left; 
 		        }
 		        
-		        if (root < x && root < y) // If both x and y are bigger than root then LCA lies in right branch
+		        if (root.value < x.value && root.value < y.value) // If both x and y are bigger than root then LCA lies in right branch
 	        	{
 		        	root = root.right;   
 	        	}
 		        else break;
-		        return (root);
- 
+		    }
+		 return (root);
 	 }
-}
 }
