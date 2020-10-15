@@ -2,7 +2,7 @@
 import java.util.ArrayList; 
 import java.util.List; 
  
-public class LCA
+public class LCA <Key extends Comparable<Key>, Value>
 {
 		//Creating nodes for tree here
 		public static class Node 
@@ -17,7 +17,7 @@ public class LCA
 		    }
 		
 			//Creating tree with each node as had issues when comparing binarytree type to nodes
-			public static Node createTree()
+			public Node createTree()
 			{
 		 
 				Node rootNode = new Node(8);		//	    8
@@ -70,13 +70,18 @@ public class LCA
 				}
 			}
 		 
-		 public static void main(String[] args) {
+		 public void main(String[] args) {
 				// TODO Auto-generated method stub
 			 	Node rootNode = createTree();
 				Node node3 = new Node(3);
 				Node node10 = new Node(10);
 				System.out.println("Lowest common ancestor for node 3 and 10:" + LCA(rootNode,node3,node10).value);
 			 }
+		}
+
+		public LCA createTree() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 }
