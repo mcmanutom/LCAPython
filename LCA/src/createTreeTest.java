@@ -9,5 +9,5 @@ public class createTreeTest {
 		LCA test = new LCA();
 		assertNotNull(test.createTree());
 	}
-    
+     
 }
