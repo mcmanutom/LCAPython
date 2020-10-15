@@ -15,70 +15,32 @@ class Node
         right = null;
         left = null;
     }
-} 
 
-//This function will create the entire tree 
-class binaryTree
-{
-	Node root;
+	//Creating tree with each node as had issues when comparing binarytree type to nodes
+	public static Node createTree()
+	{
+ 
+		Node rootNode = new Node(8);		//	    8
+		Node node5 = new Node(5);			//	   / \
+		Node node10 = new Node(10);			//    5   10 	 
+		Node node2 = new Node(2);			//   / \  / \
+		Node node6 = new Node(6);			//  2   6 3  12
+		Node node3 = new Node(3);
+		Node node12 = new Node(12);
+ 
+		rootNode.left = node5;
+		rootNode.right = node10;
+ 
+		node5.left = node2;
+		node2.right = node6;
+ 
+		node10.left = node3;
+		node10.right = node12;
 
-//This function will add nodes to the tree
-	Node addToTree (Node x, int value)
-	{
-		if (value == 0) //Finds where new node is placed
-		{
-			return new Node(value);
-		}
-		if (value < x.value) //If less than node at position x goes to left hand branch
-		{
-	        x.left = addToTree(x.left, value); //Recursively goes until reaches end of branch
-	    } 
-		else if (value > x.value) //If greater than node at position x goes down right hand branch
-		{
-	        x.right = addToTree(x.right, value);  
-		} 
-		else
-		{
-			Node result = x;
-			return (result); // When no more options that it is less than or equal to it returns value
-		}
-		return(x);
+		return rootNode;
 	}
-	
-	public void add(int value)  // Implementing the add to tree
-	{
-	    root = addToTree(root, value);
-	}
-	
-	 public binaryTree createTree() //Creating a tree to test LCA
-	 {
-		 binaryTree LCASample = new binaryTree();
-		 LCASample.add(8);				//			    8
-		 LCASample.add(5);				//			  /	  \
-		 LCASample.add(10);				//			 5		10
-		 LCASample.add(2);				//			/ \    /  \
-		 LCASample.add(6);				//		   2   6  9    12
-		 LCASample.add(9);
-		 LCASample.add(12);
-		 
-		 return(LCASample);
-	 }
 	 
-	 public Node LCA(binaryTree tree, Node x, Node y) //takes in tree and values of the two nodes we want to find LCA for
-	 {
-		 while (root != null) 
-		    { 
-		        if (root.value >  x.value && root.value > y.value) // If both x and y are smaller than root then LCA lies in left branch
-		        {
-		        	root = root.left; 
-		        }
-		        
-		        if (root.value < x.value && root.value < y.value) // If both x and y are bigger than root then LCA lies in right branch
-	        	{
-		        	root = root.right;   
-	        	}
-		        else break;
-		    }
-		 return (root);
-	 }
+	 
+
+
 }
