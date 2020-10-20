@@ -4,86 +4,75 @@ Created on 15 Oct 2020
 @author: user
 '''
  
-public class LCA <Key extends Comparable<Key>, Value>
-{
-        //Creating nodes for tree here
-        public static class Node 
-        {
-            int value;
-            Node left;
-            Node right;
-         
-            Node(int value)
-            {
-                this.value = value;
-            }
-        
-            //Creating tree with each node as had issues when comparing binarytree type to nodes
-            public Node createTree()
-            {
-         
-                Node rootNode = new Node(8);        //        8
-                Node node5 = new Node(5);            //       / \
-                Node node10 = new Node(10);            //    5   10      
-                Node node2 = new Node(2);            //   / \  / \
-                Node node6 = new Node(6);            //  2   6 3  12
-                Node node3 = new Node(3);
-                Node node12 = new Node(12);
-         
-                rootNode.left = node5;
-                rootNode.right = node10;
-         
-                node5.left = node2;
-                node2.right = node6;
-         
-                node10.left = node3;
-                node10.right = node12;
-        
-                return rootNode;
-            }
-        
-            public static Node LCA(Node root, Node a, Node b) {
-                
-                if(root == null)
-                {
-                    return null;
-                }
-                
-                if(root.value == a.value || root.value == b.value )
-                {
-                    return root;
-                }
-                
-                Node left = LCA(root.left,a,b); //checks if lca is next node on left
-                Node right=LCA(root.right,a,b); //checks if lca is next node on right
-                
-                if(left!=null && right!=null)
-                {
-                    return root;
-                }
-                
-                if(left== null)
-                {
-                    return right;
-                }
-                else
-                {
-                    return left;
-                }
-            }
-         
-         public void main(String[] args) {
-                // TODO Auto-generated method stub
-                 Node rootNode = createTree();
-                Node node3 = new Node(3);
-                Node node10 = new Node(10);
-                System.out.println("Lowest common ancestor for node 3 and 10:" + LCA(rootNode,node3,node10).value);
-             }
-        }
-
-        public LCA createTree() {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-}
+# Python Program for Lowest Common Ancestor in a Binary Tree 
+# O(n) solution to find LCS of two given values n1 and n2 
+  
+# A binary tree node 
+class Node: 
+    # Constructor to create a new binary node 
+    def __init__(self, key): 
+        self.key =  key 
+        self.left = None
+        self.right = None
+  
+# Finds the path from root node to given root of the tree. 
+# Stores the path in a list path[], returns true if path  
+# exists otherwise false 
+def findPath( root, path, k): 
+  
+    # Baes Case 
+    if root is None: 
+        return False
+  
+    # Store this node is path vector. The node will be 
+    # removed if not in path from root to k 
+    path.append(root.key) 
+  
+    # See if the k is same as root's key 
+    if root.key == k : 
+        return True
+  
+    # Check if k is found in left or right sub-tree 
+    if ((root.left != None and findPath(root.left, path, k)) or
+            (root.right!= None and findPath(root.right, path, k))): 
+        return True 
+  
+    # If not present in subtree rooted with root, remove 
+    # root from path and return False 
+       
+    path.pop() 
+    return False
+  
+# Returns LCA if node n1 , n2 are present in the given 
+# binary tre otherwise return -1 
+def findLCA(root, n1, n2): 
+  
+    # To store paths to n1 and n2 fromthe root 
+    path1 = [] 
+    path2 = [] 
+  
+    # Find paths from root to n1 and root to n2. 
+    # If either n1 or n2 is not present , return -1  
+    if (not findPath(root, path1, n1) or not findPath(root, path2, n2)): 
+        return -1 
+  
+    # Compare the paths to get the first different value 
+    i = 0 
+    while(i < len(path1) and i < len(path2)): 
+        if path1[i] != path2[i]: 
+            break
+        i += 1
+    return path1[i-1] 
+  
+  
+# Driver program to test above function 
+# Let's create the Binary Tree shown in above diagram 
+root = Node(1) 
+root.left = Node(2) 
+root.right = Node(3) 
+root.left.left = Node(4) 
+root.left.right = Node(5) 
+root.right.left = Node(6) 
+root.right.right = Node(7) 
+  
+# This code is from by https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/ as i could not figure out python and have not used it before
