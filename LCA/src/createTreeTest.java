@@ -31,5 +31,31 @@ public class createTreeTest {
         assertEquals(tree.findLCA(2,10).value, test);	
 	}
 	
+	@Test
+	public void testLCARoot() {
+		BinaryTree tree = new BinaryTree(); 
+        tree.root = new Node(1); 					//         1
+        tree.root.left = new Node(5); 				//		/    \
+        tree.root.right = new Node(8); 				// 	   5	  8
+        tree.root.left.left = new Node(2); 			//	  / \    / \
+        tree.root.left.right = new Node(10); 		//    2  10  6  12
+        tree.root.right.left = new Node(6); 
+        tree.root.right.right = new Node(12);
+        int test = 1;
+        assertEquals(tree.findLCA(2,12).value, test);	
+	}
+	@Test
+	public void testLCAIsNode() {
+		BinaryTree tree = new BinaryTree(); 
+        tree.root = new Node(1); 					//         1
+        tree.root.left = new Node(5); 				//		/    \
+        tree.root.right = new Node(8); 				// 	   5	  8
+        tree.root.left.left = new Node(2); 			//	  / \    / \
+        tree.root.left.right = new Node(10); 		//    2  10  6  12
+        tree.root.right.left = new Node(6); 
+        tree.root.right.right = new Node(12);
+        int test = 5;
+        assertEquals(tree.findLCA(5,10).value, test);	
+	}
      
 }
