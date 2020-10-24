@@ -5,12 +5,12 @@ Created on 22 Oct 2020
 '''
 import unittest
 import LCA
-from LCA import findLCA
-
+from LCA import findLCA 
+   
 
 class Test(unittest.TestCase):
 
-
+  
     def testName(self):
         pass
      
