@@ -25,4 +25,12 @@ class Test(unittest.TestCase):
         root.right.right = LCA.Node(7)
         self.assertEquals(2,findLCA(root,4,5))
         
+    def test_EmptyTree(self):
+        root = None
+        self.assertEqual(-1, LCA.findLCA(root, 6, 7))
+        
+    def test_BothNodesNotPresent(self):
+        root = LCA.Node(1)
+        self.assertEqual(-1,LCA.findLCA(root, 6, 7))    
+        
         
